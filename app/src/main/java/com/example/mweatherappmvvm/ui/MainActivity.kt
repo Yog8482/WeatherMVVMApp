@@ -75,6 +75,10 @@ class MainActivity : AppCompatActivity(), PermissionHelper.PermissionListener {
         // Permissions denied, handle the situation (e.g., show a message, disable functionality)
         Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show()
         sharedPrefs.setLocationPermission(false)
+
+        gotoSelectCity()
     }
+
+    private fun gotoSelectCity(){}
 
 }
