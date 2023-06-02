@@ -1,20 +1,31 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+   // id 'com.google.gms.google-services'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlinx-serialization'
 }
 
 android {
     namespace 'com.example.mweatherapplication'
-    compileSdk 33
+    compileSdk build_versions.compile_sdk
 
     defaultConfig {
         applicationId "com.example.mweatherapplication"
-        minSdk 24
-        targetSdk 33
+        minSdk build_versions.min_sdk
+        targetSdk build_versions.target_sdk
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+
+        buildConfigField 'String', 'WEATHER_BASE_URL', '"https://api.openweathermap.org/data/2.5/weather"'
+        buildConfigField 'String', 'WEATHE_ICON_URL', '"https://openweathermap.org/img/wn/"'
+
     }
 
     buildTypes {
@@ -23,6 +34,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildFeatures {
+        dataBinding true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -34,11 +50,56 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.10.1'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation deps.kotlin.stdlib
+    implementation deps.core_ktx
+    implementation deps.legacy_v4
+    implementation deps.app_compat
+    implementation deps.multidex
+    implementation deps.material
+    implementation deps.constraint_layout
+    implementation deps.arch_core.runtime
+    implementation deps.kotlinx_serialization_json
+
+    //Coroutines
+    implementation deps.coroutines.android
+    implementation deps.coroutines.core
+
+    //GooglePlayServices
+    implementation deps.gms_location
+
+    //Glide
+    implementation deps.glide.runtime
+    kapt deps.glide.compiler
+
+    //Hilt
+    implementation deps.hilt.android
+    kapt deps.hilt.android_compiler
+
+    //http
+    implementation deps.okhttp_logging_interceptor
+
+    //Interceptor
+    implementation deps.chucker_lib
+    implementation deps.chucker_lib_no_op
+
+   //jUnit
+    testImplementation deps.junit
+    androidTestImplementation deps.atsl.ext_junit
+
+    //ktx lifecycle
+    implementation deps.lifecycle.viewmodel_ktx
+    implementation deps.lifecycle.livedata_ktx
+    implementation deps.lifecycle.runtime_ktx
+
+    //Mockito
+    implementation deps.mockito.core
+    testImplementation deps.mockito.kotlin
+
+
+    // Retrofit
+    implementation deps.retrofit.gson
+    implementation deps.retrofit.runtime
+
+    // UI Testing -espresso
+    androidTestImplementation deps.espresso.core
 }
