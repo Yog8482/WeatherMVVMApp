@@ -90,6 +90,8 @@ versions.mockito_all = "1.10.19"
 versions.mockito_android = "2.25.0"
 versions.mockito_kotlin = "1.6.0"
 versions.mockwebserver = "3.8.1"
+versions.moshiConverter ="2.9.0"
+versions.moshi =  "1.14.0"
 
 // N
 versions.navigation = "2.5.1"
@@ -148,6 +150,10 @@ deps.firebase_bom = "com.google.firebase:firebase-bom:$versions.firebase_bom"
 //kotlinx serialization json
 deps.kotlinx_serialization_json = "org.jetbrains.kotlinx:kotlinx-serialization-json:$versions.kotlinx_serialization_json"
 
+//Moshi
+deps.moshi_codegen ="com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi"
+deps.moshi_convertor ="com.squareup.retrofit2:converter-moshi:$versions.moshiConverter"
+deps.moshi_kotlin ="com.squareup.moshi:moshi-kotlin:$versions.moshi"
 
 def activity = [:]
 activity.activity_ktx = "androidx.activity:activity-ktx:$versions.activity"
