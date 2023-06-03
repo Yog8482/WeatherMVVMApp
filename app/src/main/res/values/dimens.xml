@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="standard_margin_100">16dp</dimen>
+    <dimen name="standard_margin_400">64dp</dimen>
+    <dimen name="standard_margin_150">24dp</dimen>
+    <dimen name="standard_margin_50">8dp</dimen>
+    <dimen name="standard_margin_25">4dp</dimen>
+
+    <dimen name="standard_padding_100">16dp</dimen>
+    <dimen name="standard_padding_400">64dp</dimen>
+    <dimen name="standard_padding_50">8dp</dimen>
+    <dimen name="standard_padding_25">4dp</dimen>
+    <dimen name="standard_padding_150">24dp</dimen>
+    <dimen name="standard_padding_75">12dp</dimen>
+
+</resources>

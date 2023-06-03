@@ -40,19 +40,17 @@ class WeatherFragment : Fragment(), PermissionHelper.PermissionListener,
 
     private lateinit var binding: FragmentWeatherBinding
     private lateinit var locationHelper: LocationHelper
-//    private lateinit var permissionHelper: PermissionHelper
 
     private val permissionRequestLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { isGranted: Boolean ->
+
         if (isGranted) {
             // Permission granted
-            // Perform your desired actions here
             onPermissionsGranted()
         } else {
             // Permission denied
             onPermissionsDenied(null)
-            // Handle permission denial if needed
         }
     }
 
@@ -65,14 +63,8 @@ class WeatherFragment : Fragment(), PermissionHelper.PermissionListener,
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         permissionRequestLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
-
         observe()
         getWeatherUpdate()
-
-        /*        // Create an instance of PermissionHelper
-                permissionHelper = PermissionHelper(activity, this)
-                // Request the permissions
-                permissionHelper.requestPermissions()*/
 
         // Register the listener
         sharedPrefs.registerChangeListner(this)
@@ -111,16 +103,6 @@ class WeatherFragment : Fragment(), PermissionHelper.PermissionListener,
             locationHelper.stopLocationUpdates();
         }
     }
-
-    /*
-        override fun onRequestPermissionsResult(
-            requestCode: Int,
-            permissions: Array<out String>,
-            grantResults: IntArray
-        ) {
-            permissionHelper.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        }
-    */
 
     /**
      * This function will check weather update for last selected city first and if city is not selected

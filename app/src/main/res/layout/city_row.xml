@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="@{onCLickListner}"
-        android:padding="16dp">
+        android:padding="@dimen/standard_padding_100">
 
         <TextView
             android:id="@+id/city_name_tv"
@@ -39,7 +39,7 @@
             android:id="@+id/state_country_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/standard_margin_25"
             android:text="@{cityDetails.state+`, `+ cityDetails.country}"
             android:textColor="@color/material_dynamic_neutral50"
             app:layout_constraintEnd_toEndOf="parent"

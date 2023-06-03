@@ -5,6 +5,7 @@ import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.mweatherapplication.BuildConfig
 import com.example.mweatherapplication.R
@@ -17,6 +18,7 @@ fun bindIcon(view: ImageView, icon: String?) {
         Glide.with(view.context)
             .load(BuildConfig.WEATHER_ICON_URL + icon + ICON_EXTENSION_URL)
             .transition(DrawableTransitionOptions.withCrossFade())
+            .diskCacheStrategy(DiskCacheStrategy.DATA) //caches the original full-resolution image
             .into(view)
     }
 }

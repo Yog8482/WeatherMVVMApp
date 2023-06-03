@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mweatherapplication.databinding.CityRowBinding
 import com.example.mweatherappmvvm.data.model.CityDetailsResponse
 
-
+/**
+ * Adapter class to show city list
+ */
 class CityListAdapter(val selectCityCallback:(city:CityDetailsResponse)-> Unit) :
     ListAdapter<CityDetailsResponse, CustomViewHolder>(Companion) {
 
