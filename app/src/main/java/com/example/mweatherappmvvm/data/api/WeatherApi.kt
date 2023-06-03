@@ -12,7 +12,7 @@ interface WeatherApi {
     suspend fun getWeatherDetailsByCordinates(
         @Query("lat") lat: String,
         @Query("appid") appid: String = BuildConfig.APP_ID,
-        @Query("lon") lon: Int
+        @Query("lon") lon: String
     ): WeatherDetailsResponse
 
     @GET(BuildConfig.WEATHER_DETAILS_URL)
@@ -25,6 +25,6 @@ interface WeatherApi {
     suspend fun getCityDetailsByQuery(
         @Query("q") query: String,
         @Query("appid") appid: String = BuildConfig.APP_ID
-    ): CityDetailsResponse
+    ): List<CityDetailsResponse>
 
 }

@@ -1,7 +1,7 @@
 package com.example.mweatherappmvvm.domain.repository
 
-import com.example.mweatherappmvvm.common.AppConstants
+import com.example.mweatherappmvvm.data.model.CityDetailsResponse
 
 interface SearchRepository {
-    fun searchBy(type: AppConstants.SEARCH_BY = AppConstants.SEARCH_BY.CITY_NAME)
+   suspend fun getCityDetails(query: String): List<CityDetailsResponse>
 }
