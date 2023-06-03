@@ -34,7 +34,7 @@ class WeatherViewModel @Inject constructor(
     }
 
     /**
-     * Get Weather update by City name
+     * Get Weather updates by City name
      * @param name
      */
     fun getWeatherUpdateByCityName(name:String){
