@@ -101,6 +101,10 @@ dependencies {
     implementation deps.moshi_convertor
     kapt deps.moshi_codegen
 
+    // Navigation
+    implementation deps.navigation.fragment_ktx
+    implementation deps.navigation.ui_ktx
+
     // Retrofit
     implementation deps.retrofit.gson
     implementation deps.retrofit.runtime

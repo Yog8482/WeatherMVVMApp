@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">M-Weather</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="weather_fragment">Weather</string>
+    <string name="city_fragment">City</string>
 </resources>
