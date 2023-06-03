@@ -64,7 +64,8 @@
             android:id="@+id/title_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/standard_margin_100"
+            android:layout_marginTop="@dimen/standard_margin_50"
             android:text="@{weatherDetails.title}"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -101,12 +102,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/standard_margin_50"
             android:text="@{weatherDetails.description}"
-            tools:text="Scatered clouds"
             android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/title_tv"
-            app:layout_constraintTop_toBottomOf="@+id/title_tv" />
+            app:layout_constraintTop_toBottomOf="@+id/title_tv"
+            tools:text="Scatered clouds" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
