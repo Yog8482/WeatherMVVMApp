@@ -1,11 +1,11 @@
 package com.example.mweatherappmvvm.data.model
 
-import com.example.mweatherappmvvm.utils.ceilTo2DecimalDigit
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * This class has network response for weather details and extension function to convert network response to ui model
+ * This class has network response for weather details and extension function to
+ * convert network response into ui model
  */
 data class WeatherDetails(
     val city: String,
@@ -21,7 +21,7 @@ data class WeatherDetails(
     override fun toString() =
         "Weather details (city:$city,country:$country,title:$title,description:$description,icon:$icon,temp:$temp)"
     val inDegree=(temp - 273.15)
-    fun tempInDegreeCelcius():String= String.format("%.1f", inDegree)
+    fun tempInDegreeCelcius():String= String.format("%.0f", inDegree)
 }
 
 fun WeatherAPIResponse.toWeatherDetailsModel() =

@@ -1,4 +1,4 @@
-package com.example.mweatherappmvvm.ui
+package com.example.mweatherappmvvm.ui.adapter
 
 import android.widget.ImageView
 import android.widget.TextView

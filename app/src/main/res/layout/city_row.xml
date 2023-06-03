@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="cityDetails"
+            type="com.example.mweatherappmvvm.data.model.CityDetailsResponse" />
+
+        <variable
+            name="onCLickListner"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{onCLickListner}"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/city_name_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{cityDetails.name}"
+            android:textColor="@color/teal_700"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="Pune" />
+
+        <TextView
+            android:id="@+id/state_country_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{cityDetails.state+`, `+ cityDetails.country}"
+            android:textColor="@color/material_dynamic_neutral50"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/city_name_tv"
+            app:layout_constraintTop_toBottomOf="@+id/city_name_tv"
+            tools:text="Maharashtra, India" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
