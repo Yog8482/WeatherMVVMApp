@@ -1,10 +1,22 @@
-package com.example.mweatherappmvvm.network
+package com.example.mweatherappmvvm.utils
 
+import java.math.RoundingMode
+import java.text.DecimalFormat
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import androidx.appcompat.app.AlertDialog
+import com.example.mweatherapplication.R
 
+
+fun Double.ceilTo2DecimalDigit() {
+
+    val df = DecimalFormat("#.#")
+    df.roundingMode = RoundingMode.CEILING
+    df.format(this)
+
+}
 
 val Context.isConnected: Boolean
     get() {
@@ -28,3 +40,19 @@ val Context.isConnected: Boolean
             }
         }
     }
+
+
+fun Context.showGenericAlertDialog(message: String) {
+    val dialog = AlertDialog.Builder(this).apply {
+        setMessage(message)
+        setPositiveButton(getString(R.string.button_text_ok)) { dialog, _ ->
+            dialog.dismiss()
+        }
+    }.create()
+
+    if (dialog.isShowing) {
+        dialog.setMessage(message)
+    } else {
+        dialog.show()
+    }
+}

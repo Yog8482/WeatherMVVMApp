@@ -9,6 +9,9 @@ object AppConstants {
     const val CONNECT_TIMEOUT=60L
     const val READ_TIMEOUT=60L
     const val WRITE_TIMEOUT=60L
+
+    //Icon
+    const val ICON_EXTENSION_URL ="@2x.png"
 }
 
 sealed class UpdateBy {

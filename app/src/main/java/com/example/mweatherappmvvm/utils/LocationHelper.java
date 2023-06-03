@@ -44,7 +44,7 @@ public class LocationHelper {
                     // Process the received location
                     // You can send it to a server or perform any other required actions
                     Log.i(TAG, "Location:" + location.getLatitude() + "," + location.getLongitude());
-                    sharedPrefs.saveLastLocation(location.getLatitude() + "," + location.getLongitude());
+                    sharedPrefs.saveLastLocationCords(location.getLatitude() + "," + location.getLongitude());
                 }
             }
         };

@@ -3,9 +3,11 @@ package com.example.mweatherappmvvm.di
 import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
+import com.example.mweatherapplication.BuildConfig
 import com.example.mweatherappmvvm.common.AppConstants.CONNECT_TIMEOUT
 import com.example.mweatherappmvvm.common.AppConstants.READ_TIMEOUT
 import com.example.mweatherappmvvm.common.AppConstants.WRITE_TIMEOUT
+import com.example.mweatherappmvvm.common.MoshiFactory
 import com.example.mweatherappmvvm.data.api.WeatherApi
 import dagger.Module
 import dagger.Provides
@@ -15,6 +17,7 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -34,7 +37,8 @@ object RetrofitModule {
     @Provides
     fun provideRetrofit(okHttp: OkHttpClient) : Retrofit {
         return Retrofit.Builder().apply {
-            addConverterFactory(GsonConverterFactory.create())
+            addConverterFactory(MoshiConverterFactory.create(MoshiFactory.get()))
+            .baseUrl(BuildConfig.BASE_URL)
             client(okHttp)
         }.build()
     }

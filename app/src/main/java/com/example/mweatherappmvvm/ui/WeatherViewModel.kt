@@ -1,5 +1,7 @@
 package com.example.mweatherappmvvm.ui
 
+import androidx.databinding.ObservableBoolean
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mweatherappmvvm.common.UpdateBy
@@ -20,6 +22,7 @@ class WeatherViewModel @Inject constructor(
     private val searchUsecase: SearchCityUsecase,
     private val weatherUpdateUsecase: WeatherUpdateUsecase
 ) : ViewModel() {
+
     private val _searchstate = MutableStateFlow<SearchCityState>(SearchCityState.Idle)
     val searchUIState: StateFlow<SearchCityState> get() = _searchstate
 
@@ -29,6 +32,7 @@ class WeatherViewModel @Inject constructor(
     fun resetSearchState() {
         _searchstate.value = SearchCityState.Idle
     }
+
     fun resetWeatherState() {
         _weatherUpdateState.value = WeatherUpdateState.Idle
     }
@@ -37,7 +41,7 @@ class WeatherViewModel @Inject constructor(
      * Get Weather updates by City name
      * @param name
      */
-    fun getWeatherUpdateByCityName(name:String){
+    fun getWeatherUpdateByCityName(name: String) {
         viewModelScope.launch {
             weatherUpdateUsecase.execute(UpdateBy.ByCityName(name = name))
                 .onStart {
@@ -46,8 +50,13 @@ class WeatherViewModel @Inject constructor(
                 .catch {
                     _weatherUpdateState.value = WeatherUpdateState.Fail(it.message)
                 }
-                .collect{ weatherDetails->
-                    _weatherUpdateState.value = WeatherUpdateState.Success(weatherDetails)
+                .collect { weatherDetails ->
+                    weatherDetails?.let {
+                        _weatherUpdateState.value = WeatherUpdateState.Success(it)
+                    }?: run {
+                        _weatherUpdateState.value = WeatherUpdateState.Fail("No Data received from server")
+                    }
+
                 }
         }
     }
@@ -58,7 +67,7 @@ class WeatherViewModel @Inject constructor(
      * @param longitude
      */
 
-    fun getWeatherUpdateByCordinates(latitude:String,longitude:String){
+    fun getWeatherUpdateByCordinates(latitude: String, longitude: String) {
         viewModelScope.launch {
             weatherUpdateUsecase.execute(UpdateBy.ByCordinates(latitude, longitude))
                 .onStart {
@@ -67,8 +76,13 @@ class WeatherViewModel @Inject constructor(
                 .catch {
                     _weatherUpdateState.value = WeatherUpdateState.Fail(it.message)
                 }
-                .collect{ weatherDetails->
-                    _weatherUpdateState.value = WeatherUpdateState.Success(weatherDetails)
+                .collect { weatherDetails ->
+                    weatherDetails?.let {
+                        _weatherUpdateState.value = WeatherUpdateState.Success(it)
+                    }?: run {
+                        _weatherUpdateState.value = WeatherUpdateState.Fail("No Data received from server")
+                    }
+
                 }
         }
     }
@@ -77,7 +91,7 @@ class WeatherViewModel @Inject constructor(
      * get city list
      * @param query
      */
-    fun getCityDetailsByQuery(query:String){
+    fun getCityDetailsByQuery(query: String) {
         viewModelScope.launch {
             searchUsecase.execute(query)
                 .onStart {
@@ -86,7 +100,7 @@ class WeatherViewModel @Inject constructor(
                 .catch {
                     _searchstate.value = SearchCityState.Fail(it.message)
                 }
-                .collect{ cities ->
+                .collect { cities ->
                     _searchstate.value = SearchCityState.Success(cities)
                 }
         }
@@ -95,15 +109,15 @@ class WeatherViewModel @Inject constructor(
 
 
 sealed interface SearchCityState {
-    object Idle :  SearchCityState
-    object Loading :SearchCityState
+    object Idle : SearchCityState
+    object Loading : SearchCityState
     data class Success(val data: List<CityDetailsResponse>) : SearchCityState
     data class Fail(val failMsg: String?) : SearchCityState
 }
 
 sealed interface WeatherUpdateState {
-    object Idle :  WeatherUpdateState
-    object Loading :WeatherUpdateState
+    object Idle : WeatherUpdateState
+    object Loading : WeatherUpdateState
     data class Success(val data: WeatherDetails) : WeatherUpdateState
     data class Fail(val failMsg: String?) : WeatherUpdateState
 }

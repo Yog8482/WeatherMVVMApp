@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
     id 'kotlinx-serialization'
 }
 
@@ -22,9 +23,10 @@ android {
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
 
-        buildConfigField 'String', 'WEATHER_DETAILS_URL', '"https://api.openweathermap.org/data/2.5/weather"'
+        buildConfigField 'String', 'BASE_URL', '"https://api.openweathermap.org"'
+        buildConfigField 'String', 'WEATHER_DETAILS_ENDPOINT', '"/data/2.5/weather"'
         buildConfigField 'String', 'WEATHER_ICON_URL', '"https://openweathermap.org/img/wn/"'
-        buildConfigField 'String', 'WEATHER_GEOCODE_URL', '"http://api.openweathermap.org/geo/1.0/direct"'
+        buildConfigField 'String', 'WEATHER_GEOCODE_ENDPOINT', '"/geo/1.0/direct"'
         buildConfigField 'String', 'APP_ID', '"4ca63ac716cb7d160ea0d09722639bdd"'
 
     }
@@ -71,6 +73,10 @@ dependencies {
     //Glide
     implementation deps.glide.runtime
     kapt deps.glide.compiler
+
+    //gson
+    implementation deps.retrofit.gson
+
 
     //Hilt
     implementation deps.hilt.android

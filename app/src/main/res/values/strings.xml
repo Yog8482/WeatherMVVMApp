@@ -3,4 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="weather_fragment">Weather</string>
     <string name="city_fragment">City</string>
+    <string name="unknown_reason_try_again">Please close app and try again!</string>
+    <string name="button_text_ok">OK</string>
+    <string name="degreeCeclius">%s&#xb0;C</string>
 </resources>
