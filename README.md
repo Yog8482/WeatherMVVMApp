@@ -1,4 +1,4 @@
-# WeatherMVVMApp
+# Weather App
 
 ### Weather App with combination of Java and Kotlin Use. MVVM, Retrofit, Clean Architecture with Solid Principles, HILT, Kotlin flow, Coroutines
 
