@@ -41,7 +41,7 @@ http://openweathermap.org/weather-conditions
 
 ### Prioritized the following:
 * Proper function – requirements met.
-* Well-constructed, easy-to-follow, commented code (especially comment hacks or workarounds made in the interest of expediency
+* Well-constructed, easy-to-follow, commented code.
 * Proper separation of concerns and best-practice coding patterns.
 * Defensive code that graciously handles unexpected edge cases.
 
