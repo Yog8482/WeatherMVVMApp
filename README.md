@@ -52,4 +52,5 @@ http://openweathermap.org/weather-conditions
 - [x] Tried Good simple design
 - [x] Industry-standard design pattern adoption (MVVM)
 - [x] Adoption of SOLID principles.
-- [x] Adopted Retrofit, kotlin flow, state based ui, databinding, HILT (dependency injection), Shared preferences, Jetpack navigation compomemt with single activty usecase
+- [x] Adopted Jetpack navigation component with single activty usecase principle
+- [x] Adopted Retrofit, kotlin flow, state based ui, databinding, HILT (dependency injection), Shared preferences
